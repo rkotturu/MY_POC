@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: safeway-svc
+spec:
+  type: NodePort
+  selector:
+    app: safeway-dev
+  ports:
+    - port: 5009
+      targetPort: 5002

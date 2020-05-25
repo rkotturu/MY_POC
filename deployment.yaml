@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: safeway-pod
+  labels:
+    app: safeway-deploy1
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: safeway-dev
+  template:
+    metadata:
+      labels:
+        app: safeway-dev
+    spec:
+      containers:
+       - name: image-pods
+         image: safeway.azurecr.io/safeway-poc:latest
+      imagePullSecrets:
+        - name: safewaysecret
+      nodeSelector:
+        node: node1
